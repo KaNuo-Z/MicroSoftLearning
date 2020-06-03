@@ -1,0 +1,71 @@
+{
+  "ReRoutes": [
+    {
+      "UseServiceDiscovery": true, // 使用服务发现	
+      "DownstreamPathTemplate": "/api/{url}", // 转发路由规则	
+      "DownstreamScheme": "http", // 协议	
+      "ServiceName": "order", // 服务名称	
+      "LoadBalancerOptions": { // 负载均衡的算法（这里使用平均）	
+        "Type": "RoundRobin"
+      },
+      "UpstreamPathTemplate": "/OrderService/{url}", //  下游请求路由	
+      "UpstreamHttpMethod": [ "Get", "Post" ], // 支持请求方法	
+      "ReRoutesCaseSensitive": false // 路由大小写敏感设置	
+    },
+    {
+      "UseServiceDiscovery": true, // 使用服务发现	
+      "DownstreamPathTemplate": "/api/{url}", // 转发路由规则	
+      "DownstreamScheme": "http", // 协议	
+      "ServiceName": "product", // 服务名称	
+      "LoadBalancerOptions": { // 负载均衡的算法（这里使用平均）	
+        "Type": "RoundRobin"
+      },
+      "UpstreamPathTemplate": "/ProductService/{url}", //  下游请求路由	
+      "UpstreamHttpMethod": [ "Get", "Post" ], // 支持请求方法	
+      "ReRoutesCaseSensitive": false // 路由大小写敏感设置	
+    }
+  ],
+  //"DynamicReRoutes": [],
+  //"Aggregates": [],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "ServiceDiscoveryProvider": {
+      "Scheme": "http",
+      "Host": "192.168.56.102",
+      "Port": 8500,
+      "Type": "Consul",
+      "ConfigurationKey":"zlck" 
+      //"Token": null,
+
+      //"PollingInterval": 0,
+      //"Namespace": null
+    },
+    //"RateLimitOptions": {
+    //  "ClientIdHeader": "ClientId",
+    //  "QuotaExceededMessage": null,
+    //  "RateLimitCounterPrefix": "ocelot",
+    //  "DisableRateLimitHeaders": false,
+    //  "HttpStatusCode": 429
+    //},
+    //"QoSOptions": {
+    //  "ExceptionsAllowedBeforeBreaking": 0,
+    //  "DurationOfBreak": 0,
+    //  "TimeoutValue": 0
+    //},
+    "BaseUrl": "http://localhost:4300"
+    //"LoadBalancerOptions": {
+    //  "Type": null,
+    //  "Key": null,
+    //  "Expiry": 0
+    //},
+    //"DownstreamScheme": null,
+    //"HttpHandlerOptions": {
+    //  "AllowAutoRedirect": false,
+    //  "UseCookieContainer": false,
+    //  "UseTracing": false,
+    //  "UseProxy": true,
+    //  "MaxConnectionsPerServer": 2147483647
+    //},
+    //"DownstreamHttpVersion": null
+  }
+}

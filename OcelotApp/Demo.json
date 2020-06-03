@@ -1,0 +1,53 @@
+{
+  "DownstreamPathTemplate": "/", // 下行路由规则	
+  "UpstreamPathTemplate": "/", // 上行路由规格
+  "UpstreamHttpMethod": [ "Get" ], //支持的请求方式
+  "DownstreamHttpMethod": "",
+  "DownstreamHttpVersion": "",
+  "AddHeadersToRequest": {},
+  "AddClaimsToRequest": {},
+  "RouteClaimsRequirement": {},
+  "AddQueriesToRequest": {},
+  "RequestIdKey": "",
+  "FileCacheOptions": {
+    "TtlSeconds": 0,
+    "Region": ""
+  },
+  "ReRouteIsCaseSensitive": false,
+  "ServiceName": "",
+  "DownstreamScheme": "http",
+  "DownstreamHostAndPorts": [
+    {
+      "Host": "localhost",
+      "Port": 51876
+    }
+  ],
+  "QoSOptions": {
+    "ExceptionsAllowedBeforeBreaking": 0, //允许多少个异常请求
+    "DurationOfBreak": 0, //熔断的时间，单位为秒
+    "TimeoutValue": 0 //如果下游请求的处理时间超过多少则自如将请求设置为超时
+  },
+  "LoadBalancer": "",
+  //LeastConnection – 将请求发往最空闲的那个服务器
+  //RoundRobin – 轮流发送
+  //NoLoadBalance – 总是发往第一个请求或者是服务发现
+  //CookieStickySessions  粘性
+  "RateLimitOptions": {
+    "ClientWhitelist": [], //白名单
+    "EnableRateLimiting": false, //是否启用限流
+    "Period": "", //  Period 统计时间段：1s, 5m, 1h, 1d
+    "PeriodTimespan": 0, //多少秒之后客户端可以重试
+    "Limit": 0 //在统计时间段内允许的最大请求数量
+  },
+  "AuthenticationOptions": {
+    "AuthenticationProviderKey": "",
+    "AllowedScopes": []
+  },
+  "HttpHandlerOptions": {
+    "AllowAutoRedirect": true,
+    "UseCookieContainer": true,
+    "UseTracing": true,
+    "MaxConnectionsPerServer": 100
+  },
+  "DangerousAcceptAnyServerCertificateValidator": false
+}

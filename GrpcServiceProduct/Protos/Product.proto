@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServiceProduct.Product.Protos";
+
+package product;
+
+service Product{
+//Search Products
+rpc Search (SearchRequest) returns (SearchResult)
+}
+
+message SearchRequest{
+string name=1;
+requried INT32 pageindex=2;
+INT32 pagesize=3;
+}
+message SearchResult{
+     string name=1;
+     string 
+}

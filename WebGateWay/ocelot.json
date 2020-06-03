@@ -1,0 +1,37 @@
+{
+  "ReRoutes": [
+    {
+      "UseServiceDiscovery": true, // 使用服务发现	
+      "DownstreamPathTemplate": "/api/{url}", // 转发路由规则	
+      "DownstreamScheme": "http", // 协议	
+      "ServiceName": "order", // 服务名称	
+      "LoadBalancerOptions": { // 负载均衡的算法（这里使用平均）	
+        "Type": "RoundRobin"
+      },
+      "UpstreamPathTemplate": "/OrderService/{url}", //  下游请求路由	
+      "UpstreamHttpMethod": [ "Get", "Post" ], // 支持请求方法	
+      "ReRoutesCaseSensitive": false // 路由大小写敏感设置	
+    },
+    {
+      "UseServiceDiscovery": true, // 使用服务发现	
+      "DownstreamPathTemplate": "/api/{url}", // 转发路由规则	
+      "DownstreamScheme": "http", // 协议	
+      "ServiceName": "product", // 服务名称	
+      "LoadBalancerOptions": { // 负载均衡的算法（这里使用平均）	
+        "Type": "RoundRobin"
+      },
+      "UpstreamPathTemplate": "/ProductService/{url}", //  下游请求路由	
+      "UpstreamHttpMethod": [ "Get", "Post" ], // 支持请求方法	
+      "ReRoutesCaseSensitive": false // 路由大小写敏感设置	
+    }
+  ],
+  "GlobalConfiguration": { // 网关全局配置
+    "BaseUrl": "https://localhost:3000",
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "ConfigurationKey": "Oceolot_A"
+    }
+  }
+
+}
