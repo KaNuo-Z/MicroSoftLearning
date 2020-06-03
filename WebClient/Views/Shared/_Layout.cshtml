@@ -24,6 +24,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
+                        @if (!string.IsNullOrEmpty(ViewBag.UserName))
+                        {
+                            <li class="nav-item">
+                                @ViewBag.UserName
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Default" asp-action="LogOut">Privacy</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                未登录
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
